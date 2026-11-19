@@ -357,7 +357,9 @@
   <div id="yt-music-box" style="position: fixed; width: 1px; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden;"></div>
 
   <!-- Floating Play/Pause Control -->
-  <button type="button" class="music-toggle" id="musicBtn" onclick="toggleMusic()">⏸️ Pause "Perfect"</button>
+      <audio id="bgMusic" src="perfect.mp3" loop preload="auto"></audio>
+  <button type="button" onclick="toggleSong()" id="songBtn" style="position: fixed; bottom: 16px; right: 16px; z-index: 99; background: #e11d48; color: #fff; border: none; padding: 10px 16px; border-radius: 999px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">🎵 Play Music</button>
+
 
     <div class="gift-popup-box" onclick="event.stopPropagation()">
       <div style="font-size: 3rem;">🎉❤️🌷🪻</div>
@@ -810,6 +812,18 @@ var isPlaying = false;
       }
     }
 
+    function toggleSong() {
+      var song = document.getElementById("bgMusic");
+      var btn = document.getElementById("songBtn");
+      if (song.paused) {
+        song.play();
+        btn.innerText = "⏸️ Pause Music";
+      } else {
+        song.pause();
+        btn.innerText = "🎵 Play Music";
+      }
+      document.getElementById("bgMusic").play();
+    }
 
   </script>
 
